@@ -1,0 +1,27 @@
+
+:root {
+    --neon: #ff5e00;
+    --ink: #ffffff;
+    --bg-dark: #0f0f0f;
+    --bg-header: rgba(15, 15, 15, 0.95);
+    --border-light: rgba(255, 255, 255, 0.08);
+
+    /* новые */
+    --text-light: #ccc;   /* светло-серый для описаний */
+    --text-muted: #888;   /* более бледный серый для копирайтов */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+body {
+    background-color: var(--bg-dark);
+    color: var(--ink);
+}
+
+
+

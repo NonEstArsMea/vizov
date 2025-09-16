@@ -1,0 +1,101 @@
+{% extends "base.html" %}
+
+{% block title %}Вызов 01 - Фотографии{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style_galery.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style_modal.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style_gallery_page.css') }}">
+{% endblock %}
+
+{% block content %}
+<main class="reveal">
+    {% if user_logged_in %}
+    <!-- ✅ Для авторизованного пользователя -->
+    <section class="gallery-section">
+        <div class="gallery-container">
+            <h2 class="gallery-title">Ваши фотографии</h2>
+            <p class="gallery-subtitle">Здесь собраны фото с мероприятий, в которых вы участвовали</p>
+
+            <div class="gallery-grid">
+                {% for photo in photos %}
+                <div class="gallery-item" data-image-src="{{ url_for('static', filename='images/' + photo.filename) }}">
+                    <img src="{{ url_for('static', filename='images/' + photo.filename) }}" alt="Фото с мероприятия">
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    {% else %}
+    <!-- ❌ Для гостей -->
+    <div class="moving-gallery">
+        <!-- Ряд 1 -->
+        <div class="moving-row">
+            <div class="row-track">
+                <img src="{{ url_for('static', filename='images/DSCF6958.webp') }}">
+                <img src="{{ url_for('static', filename='images/DSCF7222.webp') }}">
+                <img src="{{ url_for('static', filename='images/DSCF7271.webp') }}">
+                <img src="{{ url_for('static', filename='images/DSCF7828.webp') }}">
+                <!-- дублируем для бесконечности -->
+                <img src="{{ url_for('static', filename='images/DSCF6958.webp') }}">
+                <img src="{{ url_for('static', filename='images/DSCF7222.webp') }}">
+                <img src="{{ url_for('static', filename='images/DSCF7271.webp') }}">
+                <img src="{{ url_for('static', filename='images/DSCF7828.webp') }}">
+            </div>
+        </div>
+
+        <!-- Ряд 2 -->
+        <div class="moving-row">
+            <div class="row-track">
+                <img src="{{ url_for('static', filename='images/DSCF7940.webp') }}">
+                <img src="{{ url_for('static', filename='images/DSCF9252.webp') }}">
+                <img src="{{ url_for('static', filename='images/p1.webp') }}">
+                <img src="{{ url_for('static', filename='images/DSCF7828.webp') }}">
+                <!-- дублируем -->
+                <img src="{{ url_for('static', filename='images/DSCF7940.webp') }}">
+                <img src="{{ url_for('static', filename='images/DSCF9252.webp') }}">
+                <img src="{{ url_for('static', filename='images/p1.webp') }}">
+                <img src="{{ url_for('static', filename='images/DSCF7828.webp') }}">
+            </div>
+        </div>
+
+        <!-- Ряд 3 -->
+        <div class="moving-row">
+            <div class="row-track">
+                <img src="{{ url_for('static', filename='images/p1.webp') }}">
+                <img src="{{ url_for('static', filename='images/DSCF7222.webp') }}">
+                <img src="{{ url_for('static', filename='images/DSCF7271.webp') }}">
+                <img src="{{ url_for('static', filename='images/DSCF6958.webp') }}">
+                <!-- дублируем -->
+                <img src="{{ url_for('static', filename='images/p1.webp') }}">
+                <img src="{{ url_for('static', filename='images/DSCF7222.webp') }}">
+                <img src="{{ url_for('static', filename='images/DSCF7271.webp') }}">
+                <img src="{{ url_for('static', filename='images/DSCF6958.webp') }}">
+            </div>
+        </div>
+
+        <div class="guest-message">
+            <h2>Хотите найти своё фото?</h2>
+            <p>Войдите в профиль или зарегистрируйтесь, чтобы просматривать и скачивать фотографии с мероприятий.</p>
+            <button class="photo-btn-outline" onclick="location.href='/login'">Войти</button>
+            <button class="photo-btn-filled" onclick="location.href='/register'">Регистрация</button>
+        </div>
+    </div>
+    {% endif %}
+</main>
+
+<!-- Модальное окно -->
+<div id="imageModal" class="image-modal">
+    <div class="modal-container">
+        <span class="modal-close" onclick="closeImageModal()">&times;</span>
+        <div class="modal-main">
+            <button class="nav-btn prev-btn" onclick="changeImage(-1)">❮</button>
+            <div class="image-wrapper">
+                <img id="modalImage" src="" alt="" class="modal-img"/>
+            </div>
+            <button class="nav-btn next-btn" onclick="changeImage(1)">❯</button>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,217 @@
+/*Адаптировано*/
+.fullscreen-description {
+    position: relative;
+    min-height: 100vh;
+    padding: 80px 20px;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+}
+
+.description-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background:
+            linear-gradient(45deg, var(--bg-header) 0%, rgba(30, 30, 30, 0.92) 100%),
+            url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100" opacity="0.03"><rect fill="%23ff5e00" x="0" y="0" width="100" height="100"/><path fill="%23ffffff" d="M20,20L80,20L80,80L20,80Z" /></svg>');
+    background-size: cover, 300px;
+    z-index: -2;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 20% 50%, rgba(255, 94, 0, 0.15) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(255, 94, 0, 0.1) 0%, transparent 50%);
+    z-index: -1;
+}
+
+.description-content {
+    max-width: 1400px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.description-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.main-title {
+    font-size: 5rem;
+    font-weight: 900;
+    color: var(--ink);
+    margin: 0 0 10px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 0 0 30px rgba(255, 94, 0, 0.5);
+}
+
+.main-subtitle {
+    font-size: 1.5rem;
+    color: var(--neon);
+    margin: 0;
+    font-weight: 300;
+    letter-spacing: 1px;
+}
+
+.description-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    align-items: start;
+}
+
+.description-column {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.description-block {
+    background: rgba(17, 17, 17, 0.7);
+    border: 1px solid var(--border-light);
+    border-radius: 16px;
+    padding: 30px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.description-block:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.4);
+}
+
+.section-title {
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: var(--ink);
+    margin: 0 0 25px;
+    border-bottom: 2px solid var(--neon);
+    padding-bottom: 10px;
+}
+
+.accent {
+    color: var(--neon);
+}
+
+.text-block {
+    color: var(--text-light, #e0e0e0);
+    font-size: 1.2rem;
+    line-height: 1.7;
+}
+
+.text-block p {
+    margin: 0 0 20px;
+}
+
+.text-block p:last-child {
+    margin-bottom: 0;
+}
+
+.features-list {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.feature-item {
+    display: flex;
+    gap: 15px;
+    align-items: flex-start;
+}
+
+.feature-icon {
+    font-size: 2rem;
+    flex-shrink: 0;
+    margin-top: 5px;
+}
+
+.feature-content h3 {
+    font-size: 1.4rem;
+    color: var(--ink);
+    margin: 0 0 8px;
+    font-weight: 600;
+}
+
+.feature-content p {
+    color: var(--text-light, #cfcfcf);
+    margin: 0;
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
+.call-to-action {
+    font-size: 1.4rem !important;
+    color: var(--neon) !important;
+    font-weight: 600;
+    text-align: center;
+    margin: 30px 0 !important;
+    padding: 15px;
+    background: rgba(255, 94, 0, 0.1);
+    border-radius: 10px;
+    border-left: 4px solid var(--neon);
+}
+
+.note {
+    font-style: italic;
+    color: var(--text-muted, #aaa) !important;
+    text-align: center;
+    padding-top: 15px;
+    border-top: 1px solid rgba(255, 94, 0, 0.3);
+}
+
+/* Адаптивность */
+@media (max-width: 1200px) {
+    .main-title {
+        font-size: 4rem;
+    }
+    .section-title {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 900px) {
+    .description-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    .main-title {
+        font-size: 3rem;
+    }
+    .main-subtitle {
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 600px) {
+    .fullscreen-description {
+        padding: 60px 15px;
+    }
+    .description-block {
+        padding: 20px;
+    }
+    .main-title {
+        font-size: 2.5rem;
+    }
+    .section-title {
+        font-size: 1.8rem;
+    }
+    .text-block {
+        font-size: 1.1rem;
+    }
+    .feature-item {
+        flex-direction: column;
+        text-align: center;
+    }
+    .feature-icon {
+        margin: 0 auto;
+    }
+}

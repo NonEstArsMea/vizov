@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block title %}Календарь мероприятий - Вызов 01{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/calendar.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+{% endblock %}
+
+{% block content %}
+<div id="calendar">
+    <h1 class="text-calendar">Календарь мероприятий</h1>
+    <!-- сам календарь -->
+    <div id="calendar-container"></div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{{ url_for('static', filename='js/calendar.js') }}"></script>
+{% endblock %}

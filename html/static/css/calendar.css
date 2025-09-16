@@ -1,0 +1,187 @@
+/*Адаптировано*/
+/* Заголовок календаря */
+.text-calendar {
+    font-family: Arial, sans-serif;
+    background: #0d0d0d;
+    color: white;
+    margin: 0;
+    padding: 40px 20px 20px; /* сверху больше отступ */
+    text-align: center;
+}
+
+/* Контейнер календаря */
+#calendar {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px; /* небольшой внутренний отступ */
+}
+
+/* Хедер */
+.calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    flex-wrap: wrap; /* чтобы на мобильных переносились */
+    gap: 10px;
+}
+
+.calendar-header h2 {
+    font-size: 28px;
+    color: #ff5e00;
+    text-shadow: 0 0 10px #ff5e00;
+    margin: 0;
+    text-transform: capitalize;
+}
+
+.calendar-header button {
+    background: #ff5e00;
+    border: none;
+    color: #fff;
+    font-size: 18px;
+    padding: 8px 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+    min-width: 90px;
+}
+
+.calendar-header button:hover {
+    background: #ff7f32;
+    transform: scale(1.05);
+}
+
+/* Сетка календаря */
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 10px;
+    opacity: 0;
+    transform: translateY(15px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.calendar-grid.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Названия дней */
+.day-name {
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 14px;
+    color: #aaa;
+    text-align: center;
+}
+
+/* Ячейка дня */
+.day {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 15px;
+    aspect-ratio: 1 / 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 8px;
+    transition: transform 0.2s, box-shadow 0.2s;
+    overflow: hidden;
+}
+
+/* Число дня */
+.day-number {
+    font-weight: bold;
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+
+/* Событие */
+.day .event {
+    background: rgba(255, 94, 0, 0.9);
+    color: #fff;
+    font-size: 12px;
+    padding: 3px 6px;
+    margin: 2px 0;
+    border-radius: 10px;
+    word-wrap: break-word;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Активные дни */
+.day.active {
+    box-shadow: 0 0 0px rgba(255, 94, 0, 0.4);
+    cursor: pointer;
+}
+.day.active:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 15px rgba(255, 94, 0, 0.8);
+}
+
+/* Пустые */
+.day.inactive {
+    opacity: 0.3;
+    background: rgba(255, 255, 255, 0.03);
+    box-shadow: none;
+    cursor: default;
+}
+
+/* Выходные */
+.weekend {
+    background: rgba(255, 94, 0, 0.15);
+}
+
+/* 📱 Адаптивность */
+@media (max-width: 900px) {
+    .calendar-header h2 {
+        font-size: 22px;
+    }
+
+    .calendar-header button {
+        font-size: 16px;
+        padding: 6px 12px;
+    }
+}
+
+@media (max-width: 700px) {
+    .calendar-grid {
+        gap: 6px;
+    }
+    .day {
+        padding: 5px;
+        border-radius: 10px;
+    }
+    .day-number {
+        font-size: 14px;
+    }
+    .day .event {
+        font-size: 10px;
+        padding: 2px 4px;
+    }
+}
+
+@media (max-width: 480px) {
+    #calendar {
+        padding: 10px;
+    }
+    .calendar-header {
+        flex-direction: column;
+        align-items: center;
+    }
+    .calendar-grid {
+        gap: 4px;
+    }
+    .day {
+        padding: 4px;
+    }
+    .day-number {
+        font-size: 12px;
+    }
+    .calendar-header h2 {
+        font-size: 18px;
+    }
+    .calendar-header button {
+        width: 100%;
+    }
+}

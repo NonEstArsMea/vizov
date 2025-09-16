@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Вызов 01{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style_header.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style_footer.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    {% block extra_css %}{% endblock %}
+    <link rel="icon" href="{{ url_for('static', filename='images/favicon.ico') }}">
+</head>
+<body>
+<!-- 🔹 Хедер -->
+<header>
+    <nav class="header-menu">
+        <!-- ЛОГО -->
+        <div class="wrap_logo">
+            <a class="logo" href="/">🔥 Вызов 01</a>
+        </div>
+
+        <!-- Бургер -->
+        <div class="burger" id="burger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+        <!-- ГЛАВНОЕ МЕНЮ -->
+        <div class="menu">
+            <a href="{{ url_for('anons') }}" class="{% if active_page == 'anons' %}active{% endif %}">Анонсы</a>
+            <a href="{{ url_for('calendar') }}" class="{% if active_page == 'calendar' %}active{% endif %}">Календарь</a>
+            <a href="{{ url_for('index') }}" class="{% if active_page == 'index' %}active{% endif %}">Профессионалы</a>
+            <a href="{{ url_for('kids') }}" class="{% if active_page == 'kids' %}active{% endif %}">Дети</a>
+            <a href="{{ url_for('gallery') }}" class="{% if active_page == 'gallery' %}active{% endif %}">Фотографии</a>
+        </div>
+
+        <!-- КОНТАКТЫ -->
+        <div class="contacts">
+            <div onclick="copyToClipboard('+7 925 518 53 33')">📞 +7 925 518 53 33</div>
+            <div onclick="copyToClipboard('7711920@mail.ru')">✉️ 7711920@mail.ru</div>
+        </div>
+
+        <!-- ВХОД -->
+        <div class="enter_wrapper">
+            <button class="btn" onclick="openLoginModal()">Войти</button>
+        </div>
+    </nav>
+
+    <!-- Мобильное меню -->
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="{{ url_for('anons') }}" class="{% if active_page == 'anons' %}active{% endif %}">Анонсы</a>
+        <a href="{{ url_for('calendar') }}" class="{% if active_page == 'calendar' %}active{% endif %}">Календарь</a>
+        <a href="{{ url_for('index') }}" class="{% if active_page == 'index' %}active{% endif %}">Профессионалы</a>
+        <a href="{{ url_for('kids') }}" class="{% if active_page == 'kids' %}active{% endif %}">Дети</a>
+        <a href="{{ url_for('gallery') }}" class="{% if active_page == 'gallery' %}active{% endif %}">Фотографии</a>
+
+        <div onclick="copyToClipboard('+7 925 518 53 33')">📞 +7 925 518 53 33</div>
+        <div onclick="copyToClipboard('7711920@mail.ru')">✉️ 7711920@mail.ru</div>
+
+        <button class="btn" onclick="openLoginModal()">Войти</button>
+    </div>
+</header>
+
+<!-- Toast -->
+<div class="z-toast" id="toast"></div>
+<!-- 🔹 Контент страницы -->
+<main>
+    {% block content %}{% endblock %}
+</main>
+
+<!-- 🔹 Футер -->
+<footer class="footer reveal">
+    <div class="footer-container">
+        <div class="footer-content">
+            <div class="footer-section">
+                <div class="footer-logo">Вызов 01</div>
+                <p class="footer-description">
+                    Организация экстремальных командных приключений и корпоративных мероприятий
+                </p>
+            </div>
+
+            <div class="footer-section">
+                <h3 class="footer-title">Контакты</h3>
+                <div class="footer-contacts">
+                    <div class="contact-item" onclick="copyToClipboard('+7 925 518 53 33')">
+                        <span class="contact-icon">📞</span>
+                        <span class="contact-text">+7 925 518 53 33</span>
+                    </div>
+                    <div class="contact-item" onclick="copyToClipboard('7711920@mail.ru')">
+                        <span class="contact-icon">✉️</span>
+                        <span class="contact-text">7711920@mail.ru</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-section">
+                <h3 class="footer-title">Быстрые ссылки</h3>
+                <div class="footer-links">
+                    <a href="anons.html" class="footer-link">Анонсы мероприятий</a>
+                    <a href="index.html" class="footer-link">Вызов 01 профессионалы</a>
+                    <a href="index2.html" class="footer-link">Вызов 01 дети</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="footer-copyright">
+                © 2025 Вызов 01. Все права защищены.
+            </div>
+            <div class="footer-developer">
+                <span>Сайт разработан </span>
+                <a href="https://agzprogs.ru/about.html" target="_blank" rel="noopener" class="developer-link">
+                    <span class="developer-name">Agzprogs</span>
+                    <span class="developer-icon">🚀</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
+<script src="{{ url_for('static', filename='js/neon_zapis.js') }}"></script>
+<script src="{{ url_for('static', filename='js/header.js') }}"></script>
+<script src="{{ url_for('static', filename='js/galery.js') }}"></script>
+<script src="{{ url_for('static', filename='js/about.js') }}"></script>
+{% block extra_js %}{% endblock %}
+</body>
+</html>

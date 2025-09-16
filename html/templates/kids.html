@@ -1,0 +1,261 @@
+{% extends "base.html" %}
+
+{% block title %}Вызов 01 - Дети{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style_kids.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style_zapis.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style_galery.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style_modal.css') }}">
+{% endblock %}
+
+{% block content %}
+<!-- Герой секция для детей -->
+<section class="kids-hero">
+    <div class="hero-content">
+        <h1>ВЫЗОВ 01 ДЕТИ</h1>
+        <p class="hero-subtitle">Приключения, которые делают детей сильнее и увереннее!</p>
+        <div class="hero-features">
+            <div class="hero-feature">🛡️ Безопасно</div>
+            <div class="hero-feature">🎯 Развивающе</div>
+            <div class="hero-feature">🤝 Командно</div>
+        </div>
+    </div>
+</section>
+
+<!-- О программе -->
+<section class="kids-about reveal">
+    <div class="about-container">
+        <h2>Программа "Юный герой"</h2>
+        <div class="about-grid">
+            <div class="about-card">
+                <div class="about-icon">👶</div>
+                <h3>Для кого</h3>
+                <p>Дети от 8 до 14 лет. Группы формируются по возрастам</p>
+            </div>
+            <div class="about-card">
+                <div class="about-icon">⏱️</div>
+                <h3>Длительность</h3>
+                <p>2-3 часа активной программы с перерывами</p>
+            </div>
+            <div class="about-card">
+                <div class="about-icon">👥</div>
+                <h3>Размер группы</h3>
+                <p>10-25 детей с 3 опытными инструкторами</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Преимущества -->
+<section class="kids-benefits">
+    <div class="benefits-container">
+        <h2>Почему выбирают нас?</h2>
+        <div class="benefits-grid">
+            <div class="benefit">
+                <div class="benefit-icon">🛡️</div>
+                <div class="benefit-content">
+                    <h3>100% безопасность</h3>
+                    <p>Профессиональное оборудование, страховка и постоянный присмотр</p>
+                </div>
+            </div>
+            <div class="benefit">
+                <div class="benefit-icon">🧠</div>
+                <div class="benefit-content">
+                    <h3>Развитие навыков</h3>
+                    <p>Ловкость, координация, работа в команде и лидерские качества</p>
+                </div>
+            </div>
+            <div class="benefit">
+                <div class="benefit-icon">🎉</div>
+                <div class="benefit-content">
+                    <h3>Незабываемые эмоции</h3>
+                    <p>Радость победы, новые друзья и уверенность в себе</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Этапы испытаний -->
+<section class="kids-stages reveal">
+    <div class="stages-container">
+        <h2>Этапы приключения</h2>
+        <div class="stages-list">
+            <div class="stage">
+                <div class="stage-number">1</div>
+                <div class="stage-content">
+                    <h3>Веревочный городок</h3>
+                    <p>Преодоление высотных препятствий с надежной страховкой</p>
+                </div>
+            </div>
+            <div class="stage">
+                <div class="stage-number">2</div>
+                <div class="stage-content">
+                    <h3>Командные головоломки</h3>
+                    <p>Решение задач, требующие совместных усилий всей команды</p>
+                </div>
+            </div>
+            <div class="stage">
+                <div class="stage-number">3</div>
+                <div class="stage-content">
+                    <h3>Скалодром</h3>
+                    <p>Развитие координации и преодоление страха высоты</p>
+                </div>
+            </div>
+            <div class="stage">
+                <div class="stage-number">4</div>
+                <div class="stage-content">
+                    <h3>Творческие задания</h3>
+                    <p>Развитие креативного мышления и нестандартных решений</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Запись -->
+<section class="zapis-section reveal" id="signup">
+    <div class="zapis-card">
+        <h2 class="zapis-title">Запишите ребенка на приключение</h2>
+        <p class="zapis-desc">Свяжитесь с нами для уточнения деталей:</p>
+
+        <!-- Телефон -->
+        <div class="zapis-row">
+            <span class="zapis-phone"
+                  data-copy="+7 925 518 53 33"
+                  title="Нажмите, чтобы скопировать">
+                +7 925 518 53 33
+            </span>
+            <button class="zapis-copy"
+                    aria-label="Скопировать номер"
+                    data-copy-target=".zapis-phone"
+                    title="Скопировать номер">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                    <rect x="9" y="9" width="13" height="13" rx="2"
+                          stroke="currentColor" stroke-width="2"/>
+                    <rect x="2" y="2" width="13" height="13" rx="2"
+                          stroke="currentColor" stroke-width="2" opacity=".7"/>
+                </svg>
+            </button>
+            <a class="zapis-call" href="tel:+79255185333" aria-label="Позвонить" title="Позвонить">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                    <path d="M22 16.92v2a2 2 0 0 1-2.18 2
+                             19.86 19.86 0 0 1-8.63-3.07
+                             19.5 19.5 0 0 1-6-6
+                             19.86 19.86 0 0 1-3.07-8.67
+                             A2 2 0 0 1 4.18 1h2
+                             a2 2 0 0 1 2 1.72
+                             c.12.89.31 1.76.57 2.6
+                             a2 2 0 0 1-.45 2.11L7.09 8.91
+                             a16 16 0 0 0 6 6l1.47-1.21
+                             a2 2 0 0 1 2.11-.45
+                             c.84.26 1.71.45 2.6.57
+                             A2 2 0 0 1 22 16.92z"
+                          stroke="currentColor" stroke-width="2"
+                          stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </a>
+        </div>
+
+        <!-- Имя -->
+        <div class="zapis-row">
+            <span class="zapis-name"
+                  data-copy="Беляев Олег"
+                  title="Нажмите, чтобы скопировать">
+                Беляев Олег
+            </span>
+            <button class="zapis-copy"
+                    aria-label="Скопировать имя"
+                    data-copy-target=".zapis-name"
+                    title="Скопировать имя">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                    <rect x="9" y="9" width="13" height="13" rx="2"
+                          stroke="currentColor" stroke-width="2"/>
+                    <rect x="2" y="2" width="13" height="13" rx="2"
+                          stroke="currentColor" stroke-width="2" opacity=".7"/>
+                </svg>
+            </button>
+        </div>
+    </div>
+</section>
+
+<!-- Галерея -->
+<section class="gallery-section reveal">
+    <div class="gallery-container">
+        <h2 class="gallery-title">Наши юные герои</h2>
+        <p class="gallery-subtitle">Яркие моменты детских приключений</p>
+
+        <div class="gallery-grid">
+            <!-- Фото 1 -->
+            <div class="gallery-item"
+                 data-image-src="{{ url_for('static', filename='images/photo_5_2025-07-01_18-13-35.webp') }}"
+                 data-image-alt="Детские соревнования">
+                <div class="watermarked-image">
+                    <img src="{{ url_for('static', filename='images/photo_5_2025-07-01_18-13-35.webp') }}"
+                         alt="Детские соревнования"
+                         loading="lazy"
+                         oncontextmenu="return false;"
+                         ondragstart="return false;"/>
+                    <div class="watermark">Вызов-01 Дети</div>
+                    <div class="image-overlay">
+                        <div class="zoom-icon">🔍</div>
+                        <div class="view-text">Нажмите для просмотра</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Фото 2 -->
+            <div class="gallery-item"
+                 data-image-src="{{ url_for('static', filename='images/photo_7_2025-07-01_18-13-35.webp') }}"
+                 data-image-alt="Командные игры">
+                <div class="watermarked-image">
+                    <img src="{{ url_for('static', filename='images/photo_7_2025-07-01_18-13-35.webp') }}"
+                         alt="Командные игры"
+                         loading="lazy"
+                         oncontextmenu="return false;"
+                         ondragstart="return false;"/>
+                    <div class="watermark">Вызов-01 Дети</div>
+                    <div class="image-overlay">
+                        <div class="zoom-icon">🔍</div>
+                        <div class="view-text">Нажмите для просмотра</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Фото 3 -->
+            <div class="gallery-item"
+                 data-image-src="{{ url_for('static', filename='images/photo_23_2025-07-01_18-13-35.webp') }}"
+                 data-image-alt="Веревочный парк">
+                <div class="watermarked-image">
+                    <img src="{{ url_for('static', filename='images/photo_23_2025-07-01_18-13-35.webp') }}"
+                         alt="Веревочный парк"
+                         loading="lazy"
+                         oncontextmenu="return false;"
+                         ondragstart="return false;"/>
+                    <div class="watermark">Вызов-01 Дети</div>
+                    <div class="image-overlay">
+                        <div class="zoom-icon">🔍</div>
+                        <div class="view-text">Нажмите для просмотра</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- Модальное окно для изображений -->
+<div id="imageModal" class="image-modal">
+    <div class="modal-container">
+        <span class="modal-close" onclick="closeImageModal()">&times;</span>
+        <div class="modal-main">
+            <button class="nav-btn prev-btn" onclick="changeImage(-1)">❮</button>
+            <div class="image-wrapper">
+                <img id="modalImage" src="" alt="" class="modal-img"/>
+            </div>
+            <button class="nav-btn next-btn" onclick="changeImage(1)">❯</button>
+        </div>
+    </div>
+</div>
+{% endblock %}

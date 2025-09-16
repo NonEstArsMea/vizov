@@ -1,0 +1,203 @@
+{% extends "base.html" %}
+
+{% block title %}Анонсы мероприятий - Вызов 01{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style_anons.css') }}">
+{% endblock %}
+
+{% block content %}
+<main class="anons-page">
+    <div class="anons-header">
+        <h1>Анонсы мероприятий</h1>
+        <p>Ближайшие события и соревнования</p>
+    </div>
+
+    <div class="anons-container">
+        <!-- Анонс 1 -->
+        <div class="anons-card reveal">
+            <div class="anons-content">
+                <div class="anons-text">
+                    <h2>Гонка Героев</h2>
+                    <div class="anons-date">12 сентября 2025 • 10:00</div>
+                    <p class="anons-description">
+                        Присоединяйся к самому захватывающему испытанию этого года!
+                        "Гонка Героев" — это экстремальная полоса препятствий,
+                        где участники проверят силу, выносливость и ловкость.
+                    </p>
+                    <div class="anons-details">
+                        <span class="detail-item">⚡ Уровень: Экстремальный</span>
+                        <span class="detail-item">🌊 Водные препятствия</span>
+                        <span class="detail-item">🔥 Огненная полоса</span>
+                        <span class="detail-item">⏱ 3-4 часа</span>
+                        <span class="detail-item">👥 10-50 человек</span>
+                        <span class="detail-item">🛡️ Страховка включена</span>
+                        <span class="detail-item">👕 Форма предоставляется</span>
+                    </div>
+                    <button class="anons-btn" onclick="openRequestModal('Гонка Героев')">
+                        🎯 Забронировать участие
+                    </button>
+                </div>
+                <div class="anons-photo">
+                    <img
+                            src="{{ url_for('static', filename='images/DSCF6958.webp') }}"
+                            alt="Гонка Героев"
+                            oncontextmenu="return false;"
+                            ondragstart="return false;"
+                            loading="lazy"
+                    />
+                    <div class="watermark">Вызов-01</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Анонс 2 -->
+        <div class="anons-card reveal">
+            <div class="anons-content">
+                <div class="anons-text">
+                    <h2>Полоса Препятствий 2025</h2>
+                    <div class="anons-date">15 сентября 2025 • 11:00</div>
+                    <p class="anons-description">
+                        Новый уровень сложности! Современное оборудование и профессиональная
+                        организация. Идеально для корпоративных команд.
+                    </p>
+                    <div class="anons-details">
+                        <span class="detail-item">⚡ Уровень: Продвинутый</span>
+                        <span class="detail-item">🏗️ Современные конструкции</span>
+                        <span class="detail-item">🎯 Тактические задания</span>
+                        <span class="detail-item">⏱ 4-5 часов</span>
+                        <span class="detail-item">👥 15-60 человек</span>
+                        <span class="detail-item">📋 Инструктаж обязательный</span>
+                        <span class="detail-item">🍲 Обед включен</span>
+                    </div>
+                    <button class="anons-btn" onclick="openRequestModal('Полоса Препятствий 2025')">
+                        🎯 Забронировать участие
+                    </button>
+                </div>
+                <div class="anons-photo">
+                    <img
+                            src="{{ url_for('static', filename='images/DSCF7222.webp') }}"
+                            alt="Полоса Препятствий 2025"
+                            oncontextmenu="return false;"
+                            ondragstart="return false;"
+                            loading="lazy"
+                    />
+                    <div class="watermark">Вызов-01</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Анонс 3 -->
+        <div class="anons-card reveal">
+            <div class="anons-content">
+                <div class="anons-text">
+                    <h2>Преграды Победы</h2>
+                    <div class="anons-date">20 сентября 2025 • 09:30</div>
+                    <p class="anons-description">
+                        Командное соревнование, где важна не только физическая подготовка,
+                        но и стратегическое мышление. Докажите, что вы достойны победы!
+                    </p>
+                    <div class="anons-details">
+                        <span class="detail-item">⚡ Уровень: Средний</span>
+                        <span class="detail-item">🧠 Стратегические задачи</span>
+                        <span class="detail-item">🤝 Командное взаимодействие</span>
+                        <span class="detail-item">⏱ 3.5 часа</span>
+                        <span class="detail-item">👥 12-40 человек</span>
+                        <span class="detail-item">📸 Фотосессия включена</span>
+                        <span class="detail-item">💧 Напитки предоставляются</span>
+                    </div>
+                    <button class="anons-btn" onclick="openRequestModal('Преграды Победы')">
+                        🎯 Забронировать участие
+                    </button>
+                </div>
+                <div class="anons-photo">
+                    <img
+                            src="{{ url_for('static', filename='images/DSCF7271.webp') }}"
+                            alt="Преграды Победы"
+                            oncontextmenu="return false;"
+                            ondragstart="return false;"
+                            loading="lazy"
+                    />
+                    <div class="watermark">Вызов-01</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Анонс 4 -->
+        <div class="anons-card reveal">
+            <div class="anons-content">
+                <div class="anons-text">
+                    <h2>Испытание Стали</h2>
+                    <div class="anons-date">25 сентября 2025 • 10:00</div>
+                    <p class="anons-description">
+                        Для тех, кто не ищет легких путей! Экстремальные испытания,
+                        которые потребуют максимальной отдачи от каждого участника.
+                    </p>
+                    <div class="anons-details">
+                        <span class="detail-item">⚡ Уровень: Максимальный</span>
+                        <span class="detail-item">💥 Предельная нагрузка</span>
+                        <span class="detail-item">🧗‍♂️ Высотные элементы</span>
+                        <span class="detail-item">⏱ 5-6 часов</span>
+                        <span class="detail-item">👥 8-30 человек</span>
+                        <span class="detail-item">🏥 Медобслуживание</span>
+                        <span class="detail-item">🎖️ Сертификат участника</span>
+                    </div>
+                    <button class="anons-btn" onclick="openRequestModal('Испытание Стали')">
+                        🎯 Забронировать участие
+                    </button>
+                </div>
+                <div class="anons-photo">
+                    <img
+                            src="{{ url_for('static', filename='images/DSCF7828.webp') }}"
+                            alt="Испытание Стали"
+                            oncontextmenu="return false;"
+                            ondragstart="return false;"
+                            loading="lazy"
+                    />
+                    <div class="watermark">Вызов-01</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Анонс 5 -->
+        <div class="anons-card reveal">
+            <div class="anons-content">
+                <div class="anons-text">
+                    <h2>Вызов Ветра</h2>
+                    <div class="anons-date">28 сентября 2025 • 13:00</div>
+                    <p class="anons-description">
+                        Динамичные испытания на скорость и координацию. Командная работа
+                        и быстрая реакция - ключ к успеху в этом захватывающем соревновании.
+                    </p>
+                    <div class="anons-details">
+                        <span class="detail-item">⚡ Уровень: Средний</span>
+                        <span class="detail-item">💨 Скоростные испытания</span>
+                        <span class="detail-item">🤸‍♂️ Акробатические элементы</span>
+                        <span class="detail-item">⏱ 2.5 часа</span>
+                        <span class="detail-item">👥 10-35 человек</span>
+                        <span class="detail-item">📹 Видеосъемка</span>
+                        <span class="detail-item">🎁 Памятные призы</span>
+                    </div>
+                    <button class="anons-btn" onclick="openRequestModal('Вызов Ветра')">
+                        🎯 Забронировать участие
+                    </button>
+                </div>
+                <div class="anons-photo">
+                    <img
+                            src="{{ url_for('static', filename='images/DSCF7940.webp') }}"
+                            alt="Вызов Ветра"
+                            oncontextmenu="return false;"
+                            ondragstart="return false;"
+                            loading="lazy"
+                    />
+                    <div class="watermark">Вызов-01</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{{ url_for('static', filename='js/anons.js') }}" defer></script>
+{% endblock %}

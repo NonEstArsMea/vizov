@@ -1,0 +1,190 @@
+/*Адаптировано*/
+.anons-page {
+    padding: 80px 20px;
+    background: linear-gradient(135deg, var(--bg-header) 0%, rgba(25, 25, 25, 0.98) 100%);
+    min-height: 100vh;
+}
+
+.anons-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.anons-header h1 {
+    font-size: 3rem;
+    font-weight: 800;
+    color: var(--ink);
+    margin-bottom: 15px;
+    text-transform: uppercase;
+}
+
+.anons-header p {
+    font-size: 1.2rem;
+    color: var(--neon);
+    font-weight: 300;
+}
+
+.anons-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.anons-card {
+    background: rgba(17, 17, 17, 0.7);
+    border: 1px solid var(--border-light);
+    border-radius: 20px;
+    padding: 30px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+}
+
+.anons-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.4);
+    border-color: var(--neon);
+}
+
+.anons-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: center;
+}
+
+.anons-text h2 {
+    font-size: 2rem;
+    color: var(--neon);
+    margin-bottom: 15px;
+    font-weight: 700;
+}
+
+.anons-date {
+    color: var(--neon);
+    font-weight: 600;
+    margin-bottom: 20px;
+    font-size: 1.1rem;
+}
+
+.anons-description {
+    color: #cfcfcf; /* можно вынести в переменную, если часто используешь */
+    line-height: 1.6;
+    margin-bottom: 25px;
+    font-size: 1.1rem;
+}
+
+.anons-details {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 12px;
+    margin-bottom: 25px;
+}
+
+.detail-item {
+    color: #aaa; /* тоже можно в var(--text-muted), если введёшь */
+    font-size: 0.9rem;
+    padding: 8px 12px;
+    background: rgba(255, 94, 0, 0.1);
+    border-radius: 8px;
+    border-left: 3px solid var(--neon);
+}
+
+.anons-btn {
+    background: linear-gradient(45deg, var(--neon), #ff8c00);
+    color: var(--ink);
+    border: none;
+    padding: 15px 30px;
+    border-radius: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 1rem;
+}
+
+.anons-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 20px rgba(255, 94, 0, 0.4);
+}
+
+.anons-photo {
+    position: relative;
+    border-radius: 15px;
+    overflow: hidden;
+    height: 300px;
+}
+
+.anons-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.anons-card:hover .anons-photo img {
+    transform: scale(1.05);
+}
+
+.watermark {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 12px;
+    font-weight: 600;
+    padding: 5px 10px;
+    background: rgba(0, 0, 0, 0.6);
+    border-radius: 6px;
+    backdrop-filter: blur(10px);
+}
+
+/* 📱 Адаптив */
+@media (max-width: 968px) {
+    .anons-content {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    .anons-photo {
+        height: 250px;
+        order: -1;
+    }
+}
+
+@media (max-width: 768px) {
+    .anons-page {
+        padding: 60px 15px;
+    }
+    .anons-header h1 {
+        font-size: 2.2rem;
+    }
+    .anons-text h2 {
+        font-size: 1.6rem;
+    }
+    .anons-card {
+        padding: 20px;
+    }
+    .anons-details {
+        grid-template-columns: 1fr;
+    }
+    .detail-item {
+        font-size: 0.85rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .anons-header h1 {
+        font-size: 1.8rem;
+    }
+    .anons-text h2 {
+        font-size: 1.4rem;
+    }
+    .anons-description {
+        font-size: 1rem;
+    }
+    .anons-btn {
+        padding: 12px 25px;
+        font-size: 0.9rem;
+    }
+}

@@ -1,0 +1,158 @@
+/* ===== СЕКЦИЯ ЗАПИСИ ===== */
+.zapis-section {
+    display: flex;
+    justify-content: center;
+    padding: 40px 16px;
+}
+
+.zapis-card {
+    background: radial-gradient(
+            120% 120% at 0% 0%,
+            rgba(255, 94, 0, 0.12) 0%,
+            rgba(255, 94, 0, 0.06) 45%,
+            rgba(255, 94, 0, 0.02) 100%
+    ),
+    rgba(17, 17, 17, 0.9);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    padding: 24px 28px;
+    max-width: 720px;
+    width: 100%;
+    box-shadow: 0 0 0 1px rgba(255, 94, 0, 0.15), 0 10px 30px rgba(0, 0, 0, 0.45);
+    backdrop-filter: blur(4px);
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.zapis-card:hover {
+    box-shadow: 0 0 14px rgba(255, 94, 0, 0.45),
+    0 0 40px rgba(255, 94, 0, 0.25);
+    transform: translateY(-2px);
+}
+
+/* ===== ЗАГОЛОВОК И ТЕКСТ ===== */
+.zapis-title {
+    margin: 0 0 8px;
+    font-size: 28px;
+    font-weight: 800;
+    color: var(--ink);
+    text-align: center;
+}
+
+.zapis-desc {
+    margin: 0 0 18px;
+    color: #cfcfcf;
+    font-size: 16px;
+    text-align: center;
+    line-height: 1.6;
+}
+
+/* ===== КОНТАКТЫ ===== */
+.zapis-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 12px 0;
+    flex-wrap: wrap;
+}
+
+.zapis-phone,
+.zapis-name {
+    color: var(--ink);
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    cursor: pointer;
+    padding: 6px 12px;
+    border-radius: 10px;
+    transition: all 0.25s ease;
+}
+
+.zapis-phone:hover,
+.zapis-name:hover {
+    color: var(--neon);
+    text-shadow: 0 0 8px var(--neon), 0 0 18px var(--neon);
+    background: rgba(255, 94, 0, 0.08);
+}
+
+/* ===== КНОПКИ ДЕЙСТВИЙ ===== */
+.zapis-copy,
+.zapis-call {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    color: var(--ink);
+    background: rgba(255, 255, 255, 0.05);
+    transition: all 0.25s ease;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.zapis-copy:hover,
+.zapis-call:hover {
+    color: #000;
+    background: var(--neon);
+    border-color: transparent;
+    box-shadow: 0 0 16px var(--neon);
+}
+
+/* ===== АНИМАЦИЯ ПОЯВЛЕНИЯ ===== */
+.reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.reveal.is-visible {
+    opacity: 1;
+    transform: none;
+}
+
+/* ===== АДАПТИВ ===== */
+@media (max-width: 768px) {
+    .zapis-card {
+        padding: 20px;
+    }
+
+    .zapis-title {
+        font-size: 24px;
+    }
+
+    .zapis-desc {
+        font-size: 15px;
+    }
+
+    .zapis-row {
+        gap: 10px;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .zapis-card {
+        padding: 18px;
+    }
+
+    .zapis-title {
+        font-size: 22px;
+    }
+
+    .zapis-desc {
+        font-size: 14px;
+    }
+
+    .zapis-phone,
+    .zapis-name {
+        font-size: 14px;
+        padding: 5px 10px;
+    }
+
+    .zapis-copy,
+    .zapis-call {
+        width: 34px;
+        height: 34px;
+        font-size: 14px;
+    }
+}

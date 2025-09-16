@@ -1,0 +1,229 @@
+/*Адаптировано*/
+/* Хедер */
+header {
+    background: var(--bg-header);
+    padding: 12px 20px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border-light);
+    box-shadow: 0 0 20px rgba(255, 94, 0, 0.3);
+}
+
+.header-menu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+/* --- Логотип --- */
+.logo {
+    font-size: 24px;
+    font-weight: 900;
+    color: var(--neon);
+    text-decoration: none;
+    text-shadow: 0 0 15px rgba(255, 94, 0, 0.7);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    white-space: nowrap;
+    transition: 0.3s;
+}
+.logo:hover {
+    color: var(--ink);
+    text-shadow: 0 0 25px var(--neon), 0 0 40px var(--neon);
+}
+
+/* --- Меню --- */
+.menu {
+    display: flex;
+    gap: 25px;
+}
+.menu a {
+    color: var(--ink);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 15px;
+    padding: 6px 12px;
+    border-radius: 8px;
+    position: relative;
+    transition: 0.3s;
+}
+.menu a:hover {
+    color: var(--neon);
+}
+.menu a.active {
+    font-weight: bold;
+    color: var(--neon);
+    border-bottom: 2px solid var(--neon);
+    text-shadow: 0 0 10px var(--neon);
+}
+
+/* --- Контакты --- */
+.contacts {
+    display: flex;
+    gap: 10px;
+}
+.contacts div {
+    font-size: 14px;
+    padding: 5px 10px;
+    background: rgba(255, 94, 0, 0.1);
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.contacts div:hover {
+    background: rgba(255, 94, 0, 0.2);
+    color: var(--neon);
+}
+
+/* --- Кнопка --- */
+.btn {
+    font-size: 14px;
+    height: 40px;
+    padding: 0 16px;
+    border-radius: 10px;
+    background: linear-gradient(45deg, var(--neon), #ff8c00);
+    color: #fff;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 0 15px rgba(255, 94, 0, 0.3);
+    transition: 0.3s;
+}
+.btn:hover {
+    background: linear-gradient(45deg, #ff7733, var(--neon));
+    box-shadow: 0 0 25px rgba(255, 94, 0, 0.5);
+    transform: translateY(-2px);
+}
+
+/* --- Бургер --- */
+.burger {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 26px;
+    height: 20px;
+    cursor: pointer;
+    z-index: 1100;
+}
+.burger span {
+    display: block;
+    height: 3px;
+    width: 100%;
+    background: var(--ink);
+    border-radius: 2px;
+    transition: 0.3s;
+}
+/* крестик */
+.burger.active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+.burger.active span:nth-child(2) {
+    opacity: 0;
+}
+.burger.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(6px, -6px);
+}
+
+/* --- Мобильное меню --- */
+.mobile-menu {
+    display: none;
+    flex-direction: column;
+    background: var(--bg-header);
+    padding: 20px;
+    gap: 15px;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.4);
+    z-index: 1000;
+}
+
+.mobile-menu.show {
+    display: flex;
+}
+
+/* Ссылки внутри мобильного меню */
+.mobile-menu a,
+.mobile-menu div {
+    display: block;
+    text-align: center;
+    font-size: 15px;
+    padding: 10px;
+    border-radius: 6px;
+    color: var(--ink);
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.mobile-menu a:hover,
+.mobile-menu div:hover {
+    background: rgba(255, 94, 0, 0.2);
+    color: var(--neon);
+}
+
+/* Кнопки внутри мобильного меню */
+.mobile-menu .btn {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    font-size: 15px;
+    border-radius: 10px;
+    background: linear-gradient(45deg, var(--neon), #ff8c00);
+    color: #fff !important; /* перекрывает цвет ссылок */
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 0 15px rgba(255, 94, 0, 0.3);
+    transition: 0.3s;
+    text-align: center;
+    text-decoration: none; /* чтобы точно не выглядела как ссылка */
+}
+
+.mobile-menu .btn:hover {
+    background: linear-gradient(45deg, #ff7733, var(--neon));
+    box-shadow: 0 0 25px rgba(255, 94, 0, 0.5);
+    transform: translateY(-2px);
+}
+
+/* --- Toast --- */
+.z-toast {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: var(--neon);
+    color: white;
+    padding: 12px 20px;
+    border-radius: 10px;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.4s ease;
+    font-size: 14px;
+    font-weight: 500;
+    z-index: 2000;
+    pointer-events: none;
+}
+.z-toast.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* --- Адаптив --- */
+@media (max-width: 768px) {
+    .menu,
+    .contacts,
+    .enter_wrapper {
+        display: none;
+    }
+    .burger {
+        display: flex;
+    }
+}
+@media (max-width: 480px) {
+    .logo { font-size: 20px; }
+    .btn { font-size: 13px; height: 38px; }
+}
