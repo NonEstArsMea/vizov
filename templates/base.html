@@ -42,13 +42,29 @@
         </div>
 
         <!-- ВХОД -->
-        <div class="enter_wrapper">
-            <button class="btn" onclick="openLoginModal()">Войти</button>
+        <div class="auth-wrapper">
+            {% if user %}
+            <div class="user-dropdown">
+                <button class="user-toggle">
+                    👋 {{ user.name }}
+                </button>
+                <div class="dropdown-menu">
+                    <a href="{{ url_for('profile') }}" class="dropdown-item">📊 Личный кабинет</a>
+                    <a href="{{ url_for('logout') }}" class="dropdown-item logout">🚪 Выйти</a>
+                </div>
+            </div>
+            {% else %}
+            <div class="enter_wrapper">
+                <a href="{{ url_for('login') }}" class="btn">Войти</a>
+            </div>
+            {% endif %}
         </div>
     </nav>
 
     <!-- Мобильное меню -->
+    <div class="mobile-overlay" id="mobileOverlay" onclick="closeMobileMenu()">
     <div class="mobile-menu" id="mobileMenu">
+
         <a href="{{ url_for('anons') }}" class="{% if active_page == 'anons' %}active{% endif %}">Анонсы</a>
         <a href="{{ url_for('calendar') }}" class="{% if active_page == 'calendar' %}active{% endif %}">Календарь</a>
         <a href="{{ url_for('index') }}" class="{% if active_page == 'index' %}active{% endif %}">Профессионалы</a>
@@ -58,7 +74,8 @@
         <div onclick="copyToClipboard('+7 925 518 53 33')">📞 +7 925 518 53 33</div>
         <div onclick="copyToClipboard('7711920@mail.ru')">✉️ 7711920@mail.ru</div>
 
-        <button class="btn" onclick="openLoginModal()">Войти</button>
+        <a href="{{ url_for('login') }}" class="btn">Войти</a>
+    </div>
     </div>
 </header>
 

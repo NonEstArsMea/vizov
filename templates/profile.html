@@ -1,0 +1,118 @@
+{% extends "base.html" %}
+
+{% block title %}Личный кабинет - Вызов 01{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/profile.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="profile-container">
+    <div class="container">
+        <div class="profile-content">
+            <!-- Профиль пользователя -->
+            <div class="profile-card fade-in-up">
+                <div class="profile-card-header">
+                    <h5>👤 Профиль пользователя</h5>
+                </div>
+                <div class="profile-card-body text-center">
+                    <div class="profile-avatar">
+                        {{ user.name[0] }}
+                    </div>
+                    <h5 class="profile-name">{{ user.name }}</h5>
+                    <p class="profile-email">{{ user.email }}</p>
+                    {% if user.verified %}
+                    <span class="profile-badge badge-verified">✓ Аккаунт подтвержден</span>
+                    {% else %}
+                    <span class="profile-badge badge-pending">⚠ Требуется подтверждение</span>
+                    {% endif %}
+                </div>
+            </div>
+
+            <!-- Навигация -->
+            <div class="profile-card fade-in-up" style="animation-delay: 0.1s">
+                <div class="profile-card-header">
+                    <h5>🚀 Быстрая навигация</h5>
+                </div>
+                <div class="profile-card-body">
+                    <div class="profile-nav-buttons">
+                        <a href="/profile/photos" class="nav-btn">
+                            <span>🖼️</span>
+                            <span>Мои фотографии</span>
+                        </a>
+                        <a href="/profile/bookings" class="nav-btn">
+                            <span>🎫</span>
+                            <span>Мои бронирования</span>
+                        </a>
+                        <a href="/profile/settings" class="nav-btn">
+                            <span>⚙️</span>
+                            <span>Настройки профиля</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Статистика -->
+            <div class="profile-card fade-in-up" style="animation-delay: 0.2s">
+                <div class="profile-card-header">
+                    <h5>📊 Ваша статистика</h5>
+                </div>
+                <div class="profile-card-body">
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-number">2</div>
+                            <p class="stat-text">Фотографии</p>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number">2</div>
+                            <p class="stat-text">Мероприятия</p>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number">1,250 ₽</div>
+                            <p class="stat-text">Потрачено</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Последние действия -->
+            <div class="profile-card fade-in-up" style="animation-delay: 0.3s">
+                <div class="profile-card-header">
+                    <h5>🕐 История действий</h5>
+                </div>
+                <div class="profile-card-body">
+                    <div class="list-group activity-list">
+                        <div class="list-group-item">
+                            <div class="d-flex w-100 justify-content-between align-items-start">
+                                <div>
+                                    <h6 class="activity-title">Покупка фото "Городская ночь"</h6>
+                                    <p class="activity-amount mb-0">+750 ₽</p>
+                                </div>
+                                <small class="activity-date">12.10.2024</small>
+                            </div>
+                        </div>
+                        <div class="list-group-item">
+                            <div class="d-flex w-100 justify-content-between align-items-start">
+                                <div>
+                                    <h6 class="activity-title">Бронирование мастер-класса</h6>
+                                    <p class="text-white mb-0">15 ноября 2024</p>
+                                </div>
+                                <small class="activity-date">05.10.2024</small>
+                            </div>
+                        </div>
+                        <div class="list-group-item">
+                            <div class="d-flex w-100 justify-content-between align-items-start">
+                                <div>
+                                    <h6 class="activity-title">Покупка фото "Закат в горах"</h6>
+                                    <p class="activity-amount mb-0">+500 ₽</p>
+                                </div>
+                                <small class="activity-date">10.10.2024</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

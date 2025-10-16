@@ -71,3 +71,37 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 });
+
+// Открытие мобильного меню
+function openMobileMenu() {
+    const mobileMenu = document.getElementById('mobileMenu');
+    const burger = document.getElementById('burger');
+
+    if (mobileMenu && burger) {
+        mobileMenu.classList.add('show');
+        burger.classList.add('active');
+        // Блокируем скролл body
+        document.body.style.overflow = 'hidden';
+    }
+}
+
+// Закрытие мобильного меню
+function closeMobileMenu() {
+    const mobileMenu = document.getElementById('mobileMenu');
+    const burger = document.getElementById('burger');
+
+    if (mobileMenu && burger) {
+        mobileMenu.classList.remove('show');
+        burger.classList.remove('active');
+        // Восстанавливаем скролл body
+        document.body.style.overflow = '';
+    }
+}
+
+// Закрытие при клике на ссылку в меню
+document.addEventListener('DOMContentLoaded', function() {
+    const mobileLinks = document.querySelectorAll('.mobile-menu a');
+    mobileLinks.forEach(link => {
+        link.addEventListener('click', closeMobileMenu);
+    });
+});

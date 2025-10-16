@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block title %}{{ event.title }} - Vizov01.ru{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h1>{{ event.title }}</h1>
+    <p><strong>Дата:</strong> {{ event.date }}</p>
+    <p><strong>Время:</strong> {{ event.time }}</p>
+    <p><strong>Место:</strong> {{ event.location }}</p>
+    <p>{{ event.description }}</p>
+
+    {% if user %}
+    <button class="btn btn-success">Забронировать</button>
+    {% else %}
+    <div class="alert alert-info">
+        Для бронирования необходимо войти в систему
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

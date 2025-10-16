@@ -1,0 +1,235 @@
+/* Стили для страницы 404 */
+.error-container {
+    min-height: calc(100vh - 140px);
+    background: linear-gradient(135deg, rgba(255,94,0,0.05) 0%, rgba(0,0,0,0.9) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.error-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background:
+            radial-gradient(circle at 20% 50%, rgba(255,94,0,0.2) 0%, transparent 50%),
+            radial-gradient(circle at 80% 80%, rgba(255,140,0,0.15) 0%, transparent 50%);
+    animation: pulse 6s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 0.6; }
+}
+
+.error-content {
+    text-align: center;
+    position: relative;
+    z-index: 10;
+    max-width: 600px;
+    padding: 0 1rem;
+}
+
+.error-code {
+    font-size: 8rem;
+    font-weight: 900;
+    background: linear-gradient(45deg, var(--neon), #ff8c00, #ff5500);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 30px rgba(255,94,0,0.5);
+    margin: 0;
+    line-height: 1;
+    animation: glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+    from {
+        text-shadow: 0 0 20px rgba(255,94,0,0.5);
+    }
+    to {
+        text-shadow: 0 0 30px rgba(255,94,0,0.8), 0 0 40px rgba(255,94,0,0.6);
+    }
+}
+
+.error-title {
+    color: var(--neon);
+    font-size: 2rem;
+    font-weight: 700;
+    margin: 1rem 0 0.5rem 0;
+    text-shadow: 0 0 10px rgba(255,94,0,0.3);
+}
+
+.error-message {
+    color: rgba(255,255,255,0.8);
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+    line-height: 1.5;
+}
+
+.error-description {
+    color: rgba(255,255,255,0.6);
+    font-size: 0.95rem;
+    margin-bottom: 2.5rem;
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.error-btn {
+    background: linear-gradient(45deg, var(--neon), #ff8c00);
+    border: none;
+    border-radius: 12px;
+    color: white;
+    font-weight: 700;
+    font-size: 1.1rem;
+    padding: 1rem 2.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+    box-shadow: 0 4px 20px rgba(255,94,0,0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+.error-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: left 0.6s ease;
+}
+
+.error-btn:hover {
+    transform: translateY(-3px);
+    box-shadow:
+            0 8px 30px rgba(255,94,0,0.5),
+            0 0 25px rgba(255,94,0,0.3);
+    color: white;
+    text-decoration: none;
+}
+
+.error-btn:hover::before {
+    left: 100%;
+}
+
+.error-illustration {
+    font-size: 4rem;
+    margin-bottom: 1.5rem;
+    animation: bounce 2s ease-in-out infinite;
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+.error-search {
+    margin-top: 2rem;
+    padding: 1rem;
+    background: rgba(255,255,255,0.05);
+    border-radius: 10px;
+    border: 1px solid rgba(255,94,0,0.2);
+}
+
+.error-search p {
+    color: rgba(255,255,255,0.7);
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+}
+
+.error-links {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 1rem;
+}
+
+.error-link {
+    color: var(--neon);
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+}
+
+.error-link:hover {
+    background: rgba(255,94,0,0.1);
+    color: #ff8c00;
+    text-decoration: none;
+}
+
+/* Анимация появления */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in-up {
+    animation: fadeInUp 0.8s ease-out;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .error-container {
+        padding: 1rem 0;
+        min-height: calc(100vh - 120px);
+    }
+
+    .error-code {
+        font-size: 6rem;
+    }
+
+    .error-title {
+        font-size: 1.75rem;
+    }
+
+    .error-message {
+        font-size: 1rem;
+    }
+
+    .error-illustration {
+        font-size: 3rem;
+    }
+
+    .error-btn {
+        padding: 0.875rem 2rem;
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .error-code {
+        font-size: 5rem;
+    }
+
+    .error-title {
+        font-size: 1.5rem;
+    }
+
+    .error-content {
+        padding: 0 0.5rem;
+    }
+
+    .error-links {
+        flex-direction: column;
+        align-items: center;
+    }
+}

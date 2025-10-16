@@ -5,7 +5,7 @@ header {
     padding: 12px 20px;
     position: sticky;
     top: 0;
-    z-index: 1000;
+    z-index: 100;
     backdrop-filter: blur(10px);
     border-bottom: 1px solid var(--border-light);
     box-shadow: 0 0 20px rgba(255, 94, 0, 0.3);
@@ -80,7 +80,11 @@ header {
 }
 
 /* --- Кнопка --- */
-.btn {
+a.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
     font-size: 14px;
     height: 40px;
     padding: 0 16px;
@@ -92,11 +96,121 @@ header {
     cursor: pointer;
     box-shadow: 0 0 15px rgba(255, 94, 0, 0.3);
     transition: 0.3s;
+    white-space: nowrap;
 }
-.btn:hover {
+
+a.btn:hover {
     background: linear-gradient(45deg, #ff7733, var(--neon));
     box-shadow: 0 0 25px rgba(255, 94, 0, 0.5);
     transform: translateY(-2px);
+    color: #fff;
+    text-decoration: none;
+}
+
+/* Стили для auth wrapper */
+.auth-wrapper {
+    display: flex;
+    align-items: center;
+}
+
+/* Dropdown для пользователя */
+.user-dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.user-toggle {
+    background: linear-gradient(45deg, var(--neon), #ff8c00);
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.user-toggle:hover {
+    background: linear-gradient(45deg, #ff7733, var(--neon));
+    box-shadow: 0 0 20px rgba(255, 94, 0, 0.4);
+}
+
+.user-dropdown {
+    position: relative;
+    display: inline-block;
+    z-index: 1001; /* Добавляем z-index */
+}
+
+.user-toggle {
+    background: linear-gradient(45deg, var(--neon), #ff8c00);
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    position: relative;
+    z-index: 1002; /* Кнопка выше dropdown */
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background: var(--bg-header);
+    border: 1px solid var(--border-light);
+    border-radius: 10px;
+    padding: 8px 0;
+    min-width: 160px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+    z-index: 1003; /* Dropdown выше всего */
+}
+
+.user-dropdown:hover .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(5px);
+}
+.dropdown-item {
+    display: block;
+    padding: 8px 16px;
+    color: var(--ink);
+    text-decoration: none;
+    font-size: 14px;
+    transition: 0.3s;
+    border: none;
+    background: none;
+    width: 100%;
+    text-align: left;
+}
+
+.dropdown-item:hover {
+    background: rgba(255, 94, 0, 0.1);
+    color: var(--neon);
+}
+
+.dropdown-item.logout {
+    color: #dc3545;
+    border-top: 1px solid var(--border-light);
+}
+
+.dropdown-item.logout:hover {
+    background: rgba(220, 53, 69, 0.1);
 }
 
 /* --- Бургер --- */
@@ -128,6 +242,8 @@ header {
     transform: rotate(-45deg) translate(6px, -6px);
 }
 
+
+
 /* --- Мобильное меню --- */
 .mobile-menu {
     display: none;
@@ -140,12 +256,20 @@ header {
     left: 0;
     right: 0;
     box-shadow: 0 5px 15px rgba(0,0,0,0.4);
-    z-index: 1000;
+    z-index: 9999; /* Высокий z-index */
+    max-height: calc(100vh - 80px); /* Максимальная высота */
+    overflow-y: auto; /* Скролл если контент не помещается */
 }
 
 .mobile-menu.show {
     display: flex;
 }
+
+/* Убираем кнопку закрытия т.к. теперь меню небольшое */
+.mobile-close {
+    display: none;
+}
+
 
 /* Ссылки внутри мобильного меню */
 .mobile-menu a,
@@ -174,20 +298,44 @@ header {
     font-size: 15px;
     border-radius: 10px;
     background: linear-gradient(45deg, var(--neon), #ff8c00);
-    color: #fff !important; /* перекрывает цвет ссылок */
+    color: #fff !important;
     font-weight: bold;
     border: none;
     cursor: pointer;
     box-shadow: 0 0 15px rgba(255, 94, 0, 0.3);
     transition: 0.3s;
     text-align: center;
-    text-decoration: none; /* чтобы точно не выглядела как ссылка */
+    text-decoration: none;
 }
 
 .mobile-menu .btn:hover {
     background: linear-gradient(45deg, #ff7733, var(--neon));
     box-shadow: 0 0 25px rgba(255, 94, 0, 0.5);
     transform: translateY(-2px);
+}
+
+/* Кнопка закрытия мобильного меню */
+.mobile-close {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: none;
+    border: none;
+    font-size: 24px;
+    color: var(--ink);
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: 0.3s;
+}
+
+.mobile-close:hover {
+    background: rgba(255, 94, 0, 0.2);
+    color: var(--neon);
 }
 
 /* --- Toast --- */

@@ -1,0 +1,291 @@
+/* Стили для страницы входа */
+.login-container {
+    min-height: calc(100vh - 140px); /* Вычитаем высоту хедера и футера */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, rgba(255,94,0,0.1) 0%, rgba(0,0,0,0.8) 100%);
+    position: relative;
+    overflow: hidden;
+    padding: 2rem 0; /* Добавляем вертикальные отступы */
+    margin: 0; /* Убираем внешние отступы */
+
+}
+
+.login-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background:
+            radial-gradient(circle at 20% 80%, rgba(255,94,0,0.3) 0%, transparent 50%),
+            radial-gradient(circle at 80% 20%, rgba(255,140,0,0.2) 0%, transparent 50%),
+            radial-gradient(circle at 40% 40%, rgba(255,94,0,0.15) 0%, transparent 50%);
+    animation: pulse 8s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 0.5; }
+    50% { opacity: 0.8; }
+}
+
+.login-card {
+    background: rgba(15, 23, 42, 0.95);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255,94,0,0.3);
+    border-radius: 20px;
+    box-shadow:
+            0 0 50px rgba(255,94,0,0.3),
+            inset 0 1px 0 rgba(255,255,255,0.1);
+    overflow: hidden;
+    position: relative;
+    z-index: 10;
+    transition: all 0.3s ease;
+    margin: 2rem 0; /* Отступы вокруг карточки */
+}
+
+.login-card:hover {
+    transform: translateY(-5px);
+    box-shadow:
+            0 0 80px rgba(255,94,0,0.5),
+            inset 0 1px 0 rgba(255,255,255,0.1);
+}
+
+.login-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,94,0,0.1), transparent);
+    transition: left 0.6s ease;
+}
+
+.login-card:hover::before {
+    left: 100%;
+}
+
+.login-header {
+    background: linear-gradient(135deg, rgba(255,94,0,0.2), rgba(255,140,0,0.1));
+    border-bottom: 1px solid rgba(255,94,0,0.3);
+    padding: 2rem;
+    text-align: center;
+    position: relative;
+}
+
+.login-title {
+    color: var(--neon);
+    font-size: 2.5rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 0 0 20px rgba(255,94,0,0.7);
+    margin: 0;
+}
+
+.login-subtitle {
+    color: rgba(255,255,255,0.7);
+    font-size: 1rem;
+    margin-top: 0.5rem;
+    font-weight: 300;
+}
+
+.login-body {
+    padding: 2.5rem;
+}
+
+.test-access-card {
+    background: linear-gradient(135deg, rgba(255,94,0,0.15), rgba(255,140,0,0.1));
+    border: 1px solid rgba(255,94,0,0.3);
+    border-radius: 15px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.test-access-card::before {
+    content: '🔥';
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 1.5rem;
+    opacity: 0.5;
+}
+
+.test-access-title {
+    color: var(--neon);
+    font-weight: 700;
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+    text-shadow: 0 0 10px rgba(255,94,0,0.5);
+}
+
+.test-access-text {
+    color: rgba(255,255,255,0.8);
+    font-size: 0.9rem;
+    margin: 0;
+    line-height: 1.4;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+    position: relative;
+}
+
+.form-label {
+    color: var(--neon);
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    display: block;
+    text-shadow: 0 0 10px rgba(255,94,0,0.3);
+}
+
+.form-control {
+    background: rgba(255,255,255,0.05);
+    border: 2px solid rgba(255,94,0,0.3);
+    border-radius: 12px;
+    color: white;
+    padding: 1rem 1.2rem;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+}
+
+.form-control:focus {
+    background: rgba(255,255,255,0.1);
+    border-color: var(--neon);
+    box-shadow: 0 0 20px rgba(255,94,0,0.4);
+    color: white;
+    outline: none;
+}
+
+.form-control::placeholder {
+    color: rgba(255,255,255,0.4);
+}
+
+.login-btn {
+    background: linear-gradient(45deg, var(--neon), #ff8c00);
+    border: none;
+    border-radius: 12px;
+    color: white;
+    font-weight: 700;
+    font-size: 1.1rem;
+    padding: 1.2rem;
+    width: 100%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    position: relative;
+    overflow: hidden;
+}
+
+.login-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: left 0.6s ease;
+}
+
+.login-btn:hover {
+    transform: translateY(-2px);
+    box-shadow:
+            0 10px 30px rgba(255,94,0,0.5),
+            0 0 30px rgba(255,94,0,0.3);
+}
+
+.login-btn:hover::before {
+    left: 100%;
+}
+
+.register-link {
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.register-link a {
+    color: var(--neon);
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.register-link a::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--neon);
+    transition: width 0.3s ease;
+}
+
+.register-link a:hover {
+    color: #ff8c00;
+    text-shadow: 0 0 10px rgba(255,94,0,0.5);
+}
+
+.register-link a:hover::after {
+    width: 100%;
+}
+
+/* Анимации */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in-up {
+    animation: fadeInUp 0.6s ease-out;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .login-container {
+        padding: 1rem;
+        min-height: calc(100vh - 120px); /* Меньше на мобильных */
+    }
+
+    .login-card {
+        margin: 1rem 0;
+    }
+
+    .login-title {
+        font-size: 2rem;
+    }
+
+    .login-body {
+        padding: 1.5rem;
+    }
+
+    .login-header {
+        padding: 1.5rem;
+    }
+}
+
+/* Убираем лишние отступы у основного контейнера */
+.container {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+}
+
+/* Исправляем отступы для row */
+.row.justify-content-center {
+    margin: 0;
+}

@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block title %}Страница не найдена - Вызов 01{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/404.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="error-container">
+    <div class="error-content fade-in-up">
+        <!-- Анимированная иконка -->
+        <div class="error-illustration">🚧</div>
+
+        <!-- Код ошибки -->
+        <h1 class="error-code">404</h1>
+
+        <!-- Заголовок -->
+        <h2 class="error-title">Страница не найдена</h2>
+
+        <!-- Основное сообщение -->
+        <p class="error-message">
+            Запрашиваемая страница не существует или была перемещена
+        </p>
+
+        <!-- Дополнительное описание -->
+        <p class="error-description">
+            Возможно, вы перешли по устаревшей ссылке или ввели неправильный адрес
+        </p>
+
+        <!-- Основная кнопка -->
+        <a href="/" class="error-btn">
+            🏠 Вернуться на главную
+        </a>
+
+        <!-- Дополнительные ссылки -->
+        <div class="error-search">
+            <p>Попробуйте перейти на одну из этих страниц:</p>
+            <div class="error-links">
+                <a href="{{ url_for('anons') }}" class="error-link">📢 Анонсы</a>
+                <a href="{{ url_for('gallery') }}" class="error-link">🖼️ Фотографии</a>
+                <a href="{{ url_for('calendar') }}" class="error-link">📅 Календарь</a>
+                <a href="{{ url_for('kids') }}" class="error-link">👦 Детям</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

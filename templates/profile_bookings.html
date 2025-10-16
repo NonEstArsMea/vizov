@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block title %}Мои бронирования - Vizov01.ru{% endblock %}
+
+{% block content %}
+<div class="container mt-4 fade-in">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1>Мои бронирования</h1>
+        <a href="/calendar" class="btn btn-primary">Забронировать еще</a>
+    </div>
+
+    {% if bookings %}
+    <div class="row">
+        {% for booking in bookings %}
+        <div class="col-md-6 mb-4">
+            <div class="card h-100">
+                <div class="card-body d-flex flex-column">
+                    <h5 class="card-title">{{ booking.title }}</h5>
+                    <div class="flex-grow-1">
+                        <p class="card-text">
+                            <strong>📅 Дата:</strong> {{ booking.date }}<br>
+                            <strong>⏰ Забронировано:</strong> {{ booking.booking_date }}<br>
+                            <strong>📊 Статус:</strong>
+                            <span class="badge bg-success">Подтверждено</span>
+                        </p>
+                    </div>
+                    <div class="d-grid gap-2">
+                        <button class="btn btn-primary">📋 Детали мероприятия</button>
+                        <button class="btn btn-outline-danger">❌ Отменить бронь</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    <div class="text-center py-5">
+        <div class="mb-4">
+            <h3>У вас пока нет бронирований</h3>
+            <p class="text-muted">Посмотрите доступные мероприятия в календаре!</p>
+        </div>
+        <a href="/calendar" class="btn btn-primary btn-lg">Перейти в календарь</a>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

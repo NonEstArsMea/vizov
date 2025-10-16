@@ -1,0 +1,98 @@
+{% extends "base.html" %}
+
+{% block title %}Настройки - Vizov01.ru{% endblock %}
+
+{% block content %}
+<div class="container mt-4 fade-in">
+    <h1 class="mb-4">Настройки профиля</h1>
+
+    <div class="row">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">
+                    <h5>👤 Основная информация</h5>
+                </div>
+                <div class="card-body">
+                    <form>
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label class="form-label">Имя</label>
+                                <input type="text" class="form-control" value="{{ user.name }}" readonly>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Email</label>
+                                <input type="email" class="form-control" value="{{ user.email }}" readonly>
+                            </div>
+                        </div>
+                        <button type="button" class="btn btn-outline-secondary" disabled>
+                            ✏️ Редактирование временно недоступно
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="card mt-4">
+                <div class="card-header">
+                    <h5>🔐 Смена пароля</h5>
+                </div>
+                <div class="card-body">
+                    <form>
+                        <div class="mb-3">
+                            <label class="form-label">Текущий пароль</label>
+                            <input type="password" class="form-control" placeholder="********" readonly>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Новый пароль</label>
+                            <input type="password" class="form-control" placeholder="********" readonly>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Подтвердите новый пароль</label>
+                            <input type="password" class="form-control" placeholder="********" readonly>
+                        </div>
+                        <button type="button" class="btn btn-outline-secondary" disabled>
+                            🔄 Смена пароля временно недоступна
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-header">
+                    <h5>🔔 Уведомления</h5>
+                </div>
+                <div class="card-body">
+                    <div class="form-check form-switch mb-3">
+                        <input class="form-check-input" type="checkbox" checked disabled>
+                        <label class="form-check-label">📧 Email уведомления</label>
+                    </div>
+                    <div class="form-check form-switch mb-3">
+                        <input class="form-check-input" type="checkbox" checked disabled>
+                        <label class="form-check-label">🖼️ Уведомления о новых фото</label>
+                    </div>
+                    <div class="form-check form-switch mb-3">
+                        <input class="form-check-input" type="checkbox" disabled>
+                        <label class="form-check-label">📢 Рекламные рассылки</label>
+                    </div>
+                    <div class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" checked disabled>
+                        <label class="form-check-label">🎫 Уведомления о мероприятиях</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card mt-4">
+                <div class="card-body text-center">
+                    <div class="text-muted mb-3">
+                        <small>Это демо-версия личного кабинета</small>
+                    </div>
+                    <button class="btn btn-outline-danger w-100" disabled>
+                        🗑️ Удалить аккаунт
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
