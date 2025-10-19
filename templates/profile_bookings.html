@@ -2,45 +2,220 @@
 
 {% block title %}Мои бронирования - Vizov01.ru{% endblock %}
 
-{% block content %}
-<div class="container mt-4 fade-in">
-    <div class="d-flex justify-content-between align-items-center mb-4">
-        <h1>Мои бронирования</h1>
-        <a href="/calendar" class="btn btn-primary">Забронировать еще</a>
-    </div>
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style_profile_bookings.css') }}">
+{% endblock %}
 
-    {% if bookings %}
-    <div class="row">
-        {% for booking in bookings %}
-        <div class="col-md-6 mb-4">
-            <div class="card h-100">
-                <div class="card-body d-flex flex-column">
-                    <h5 class="card-title">{{ booking.title }}</h5>
-                    <div class="flex-grow-1">
-                        <p class="card-text">
-                            <strong>📅 Дата:</strong> {{ booking.date }}<br>
-                            <strong>⏰ Забронировано:</strong> {{ booking.booking_date }}<br>
-                            <strong>📊 Статус:</strong>
-                            <span class="badge bg-success">Подтверждено</span>
-                        </p>
+{% block content %}
+<section class="bookings-section fade-in">
+    <div class="bookings-container">
+        <div class="bookings-header">
+            <h1 class="bookings-title">МОИ БРОНИРОВАНИЯ</h1>
+            <p class="bookings-subtitle">Ваши предстоящие экстремальные приключения</p>
+            <a href="/calendar" class="new-booking-btn">
+                🗓️ Забронировать еще
+            </a>
+        </div>
+
+        {% if bookings %}
+        <div class="bookings-grid">
+            {% for booking in bookings %}
+            <div class="booking-card" data-status="{{ 'confirmed' if booking.booked else 'pending' }}">
+                <div class="booking-header">
+                    <div class="booking-badge {% if booking.booked %}confirmed{% else %}pending{% endif %}">
+                        {{ '✅ Подтверждено' if booking.booked else '⏳ Ожидание' }}
                     </div>
-                    <div class="d-grid gap-2">
-                        <button class="btn btn-primary">📋 Детали мероприятия</button>
-                        <button class="btn btn-outline-danger">❌ Отменить бронь</button>
+                    <div class="booking-urgency {% if booking.soon %}soon{% endif %}">
+                        {{ '🔥 Скоро!' if booking.soon else '📅 В планах' }}
                     </div>
+                </div>
+
+                <div class="booking-content">
+                    <h3 class="booking-title">{{ booking.title }}</h3>
+
+                    <!-- Основная информация (показывается по умолчанию) -->
+                    <div class="booking-details active">
+                        <div class="detail-item">
+                            <span class="detail-icon">📅</span>
+                            <div class="detail-content">
+                                <strong>Дата мероприятия</strong>
+                                <span class="detail-value">{{ booking.date }}</span>
+                            </div>
+                        </div>
+
+                        <div class="detail-item">
+                            <span class="detail-icon">⏰</span>
+                            <div class="detail-content">
+                                <strong>Забронировано</strong>
+                                <span class="detail-value">{{ booking.booking_date }}</span>
+                            </div>
+                        </div>
+
+                        <div class="detail-item">
+                            <span class="detail-icon">👥</span>
+                            <div class="detail-content">
+                                <strong>Участников</strong>
+                                <span class="detail-value">{{ booking.participants or '1 человек' }}</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Дополнительная информация (скрыта по умолчанию) -->
+                    <div class="booking-info">
+                        <div class="info-item">
+                            <span class="info-icon">📍</span>
+                            <div class="info-content">
+                                <strong>Место проведения</strong>
+                                <span class="info-value">База "Экстрим Парк", Москва</span>
+                            </div>
+                        </div>
+
+                        <div class="info-item">
+                            <span class="info-icon">⏱️</span>
+                            <div class="info-content">
+                                <strong>Длительность</strong>
+                                <span class="info-value">4 часа</span>
+                            </div>
+                        </div>
+
+                        <div class="info-item">
+                            <span class="info-icon">🎯</span>
+                            <div class="info-content">
+                                <strong>Сложность</strong>
+                                <span class="info-value">Высокая</span>
+                            </div>
+                        </div>
+
+                        <div class="info-item">
+                            <span class="info-icon">👕</span>
+                            <div class="info-content">
+                                <strong>Что надеть</strong>
+                                <span class="info-value">Спортивная форма, кроссовки</span>
+                            </div>
+                        </div>
+
+                        <div class="info-item">
+                            <span class="info-icon">📝</span>
+                            <div class="info-content">
+                                <strong>Что взять с собой</strong>
+                                <span class="info-value">Сменную одежду, полотенце, воду</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Прогресс подготовки -->
+                    <div class="preparation-progress">
+                        <div class="progress-header">
+                            <span>Подготовка к мероприятию</span>
+                            <span class="progress-percent">65%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 65%"></div>
+                        </div>
+                        <div class="progress-steps">
+                            <span class="step completed">✅ Бронь</span>
+                            <span class="step completed">✅ Оплата</span>
+                            <span class="step current">📝 Анкета</span>
+                            <span class="step">🎯 Инструктаж</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="booking-actions">
+                    <button class="action-btn primary toggle-info-btn">
+                        <span class="toggle-icon">📖</span>
+                        <span class="toggle-text">Подробнее</span>
+                    </button>
+                    <button class="action-btn secondary share-btn">
+                        🔗 Поделиться
+                    </button>
+                    <button class="action-btn danger cancel-btn" data-booking-id="{{ booking.id }}">
+                        ❌ Отменить бронь
+                    </button>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+        <!-- Статистика бронирований -->
+        <div class="bookings-stats">
+            <div class="stat-card">
+                <div class="stat-icon">📅</div>
+                <div class="stat-info">
+                    <span class="stat-number">{{ bookings|length }}</span>
+                    <span class="stat-label">Всего броней</span>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">✅</div>
+                <div class="stat-info">
+                    <span class="stat-number">{{ bookings|selectattr('booked')|list|length }}</span>
+                    <span class="stat-label">Подтверждено</span>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">🔥</div>
+                <div class="stat-info">
+                    <span class="stat-number">{{ bookings|selectattr('soon')|list|length }}</span>
+                    <span class="stat-label">Скоро</span>
                 </div>
             </div>
         </div>
-        {% endfor %}
-    </div>
-    {% else %}
-    <div class="text-center py-5">
-        <div class="mb-4">
-            <h3>У вас пока нет бронирований</h3>
-            <p class="text-muted">Посмотрите доступные мероприятия в календаре!</p>
+
+        {% else %}
+        <div class="empty-bookings">
+            <div class="empty-icon">🎯</div>
+            <h2 class="empty-title">БРОНИРОВАНИЙ НЕТ</h2>
+            <p class="empty-text">
+                У вас пока нет забронированных мероприятий. Самое время выбрать
+                экстремальное приключение по душе и оставить свою заявку!
+            </p>
+            <div class="empty-actions">
+                <a href="/calendar" class="empty-btn primary">
+                    🗓️ Посмотреть календарь
+                </a>
+                <a href="/anons" class="empty-btn secondary">
+                    📢 Смотреть анонсы
+                </a>
+            </div>
         </div>
-        <a href="/calendar" class="btn btn-primary btn-lg">Перейти в календарь</a>
+        {% endif %}
     </div>
-    {% endif %}
+</section>
+
+<!-- Модальное окно отмены брони -->
+<div id="cancelModal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h3>❌ Отмена бронирования</h3>
+            <span class="modal-close">&times;</span>
+        </div>
+        <div class="modal-body">
+            <p>Вы уверены, что хотите отменить бронирование?</p>
+            <div class="booking-preview">
+                <strong id="modalBookingTitle"></strong>
+                <span id="modalBookingDate"></span>
+            </div>
+            <div class="cancellation-reasons">
+                <label>Причина отмены (необязательно):</label>
+                <select id="cancelReason">
+                    <option value="">Выберите причину...</option>
+                    <option value="schedule">Изменение планов</option>
+                    <option value="health">Проблемы со здоровьем</option>
+                    <option value="financial">Финансовые причины</option>
+                    <option value="other">Другое</option>
+                </select>
+                <textarea id="cancelComment" placeholder="Дополнительный комментарий..."></textarea>
+            </div>
+        </div>
+        <div class="modal-actions">
+            <button class="modal-btn secondary" id="cancelNo">Нет, оставить</button>
+            <button class="modal-btn danger" id="cancelYes">Да, отменить</button>
+        </div>
+    </div>
 </div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{{ url_for('static', filename='js/profile_bookings.js') }}"></script>
 {% endblock %}

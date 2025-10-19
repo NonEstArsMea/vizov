@@ -6,9 +6,9 @@ document.addEventListener("DOMContentLoaded", () => {
     let currentYear = today.getFullYear();
 
     const events = {
-        "2025-09-05": ["🔥 Тимбилдинг в Москве"],
-        "2025-09-12": ["🏆 Корпоративные игры"],
-        "2025-09-21": ["🎉 Турнир по спасению"],
+        "2025-10-05": ["🔥 Тимбилдинг в Москве"],
+        "2025-10-12": ["🏆 Корпоративные игры"],
+        "2025-10-21": ["🎉 Турнир по спасению"],
     };
 
     function renderCalendar(month, year) {

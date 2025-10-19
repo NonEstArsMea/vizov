@@ -1,0 +1,416 @@
+/* Стили для страницы "Мои фотографии" в стиле главной */
+.photos-section {
+    position: relative;
+    min-height: 100vh;
+    padding: clamp(40px, 8vw, 80px) 20px;
+    background: linear-gradient(
+            135deg,
+            rgba(0, 0, 0, 0.95) 0%,
+            rgba(255, 94, 0, 0.15) 50%,
+            rgba(0, 0, 0, 0.9) 100%
+    );
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.photos-container {
+    max-width: 1400px;
+    width: 100%;
+    text-align: center;
+}
+
+.photos-header {
+    margin-bottom: clamp(30px, 8vw, 60px);
+}
+
+.photos-title {
+    font-size: clamp(2rem, 6vw, 4rem);
+    font-weight: 900;
+    color: var(--neon, #ff5e00);
+    text-shadow: 0 0 30px rgba(255, 94, 0, 0.7);
+    margin-bottom: 0.5em;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.photos-subtitle {
+    font-size: clamp(1rem, 2.5vw, 1.3rem);
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 30px;
+    font-weight: 300;
+}
+
+.buy-more-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 28px;
+    background: linear-gradient(45deg, var(--neon, #ff5e00), #ff8c00);
+    color: white;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 0 0 25px rgba(255, 94, 0, 0.5);
+    animation: pulse 2s infinite;
+}
+
+.buy-more-btn:hover {
+    animation: none;
+    transform: translateY(-3px);
+    box-shadow: 0 0 40px rgba(255, 94, 0, 0.7);
+    color: white;
+    text-decoration: none;
+}
+
+/* Сетка фотографий */
+.photos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 30px;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.photo-card {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 0;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 94, 0, 0.2);
+    transition: all 0.4s ease;
+    overflow: hidden;
+    position: relative;
+}
+
+.photo-card:hover {
+    transform: translateY(-8px);
+    border-color: var(--neon, #ff5e00);
+    box-shadow:
+            0 20px 40px rgba(0, 0, 0, 0.6),
+            0 0 30px rgba(255, 94, 0, 0.3);
+}
+
+/* Имитация фото */
+.photo-image {
+    position: relative;
+    height: 250px;
+    background: linear-gradient(135deg, rgba(40, 40, 40, 0.9) 0%, rgba(60, 60, 60, 0.8) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.photo-image::before {
+    content: '📸';
+    font-size: 4rem;
+    opacity: 0.3;
+    position: absolute;
+}
+
+.photo-preview {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+            135deg,
+            rgba(255, 94, 0, 0.2) 0%,
+            rgba(255, 94, 0, 0.1) 50%,
+            transparent 100%
+    );
+    opacity: 0;
+    transition: all 0.4s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.photo-card:hover .photo-preview {
+    opacity: 1;
+}
+
+.preview-text {
+    color: white;
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+    background: rgba(255, 94, 0, 0.9);
+    padding: 10px 20px;
+    border-radius: 25px;
+    backdrop-filter: blur(10px);
+}
+
+.photo-badge {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: rgba(255, 94, 0, 0.9);
+    color: white;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    backdrop-filter: blur(10px);
+    z-index: 2;
+}
+
+/* Контент карточки */
+.photo-content {
+    padding: 25px;
+}
+
+.photo-title {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.photo-details {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.photo-price {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--neon, #ff5e00);
+    text-shadow: 0 0 10px rgba(255, 94, 0, 0.3);
+}
+
+.photo-date {
+    font-size: 0.95rem;
+    color: rgba(255, 255, 255, 0.7);
+    font-weight: 500;
+}
+
+.photo-actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+.download-btn, .share-btn {
+    padding: 12px 20px;
+    border: none;
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: center;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.download-btn {
+    background: linear-gradient(45deg, #00b894, #00a085);
+    color: white;
+    box-shadow: 0 4px 15px rgba(0, 184, 148, 0.3);
+}
+
+.download-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 184, 148, 0.5);
+    color: white;
+    text-decoration: none;
+}
+
+.share-btn {
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+}
+
+.share-btn:hover {
+    background: rgba(255, 94, 0, 0.2);
+    border: 1px solid var(--neon, #ff5e00);
+    transform: translateY(-2px);
+    color: white;
+    text-decoration: none;
+}
+
+/* Стили для пустого состояния */
+.empty-state {
+    text-align: center;
+    padding: 80px 20px;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.empty-icon {
+    font-size: 5rem;
+    margin-bottom: 2rem;
+    opacity: 0.5;
+    animation: bounce 2s ease-in-out infinite;
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+.empty-title {
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 1.5rem;
+    text-shadow: 0 0 20px rgba(255, 94, 0, 0.5);
+}
+
+.empty-text {
+    font-size: 1.2rem;
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 3rem;
+    line-height: 1.6;
+}
+
+.empty-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 16px 32px;
+    background: linear-gradient(45deg, var(--neon, #ff5e00), #ff8c00);
+    color: white;
+    font-size: 1.2rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 0 0 25px rgba(255, 94, 0, 0.5);
+    animation: pulse 2s infinite;
+}
+
+.empty-btn:hover {
+    animation: none;
+    transform: translateY(-3px);
+    box-shadow: 0 0 40px rgba(255, 94, 0, 0.7);
+    color: white;
+    text-decoration: none;
+}
+
+/* Анимации */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in {
+    animation: fadeInUp 0.8s ease-out;
+}
+
+.photo-card {
+    animation: fadeInUp 0.6s ease-out;
+    animation-fill-mode: both;
+}
+
+.photo-card:nth-child(1) { animation-delay: 0.1s; }
+.photo-card:nth-child(2) { animation-delay: 0.2s; }
+.photo-card:nth-child(3) { animation-delay: 0.3s; }
+.photo-card:nth-child(4) { animation-delay: 0.4s; }
+.photo-card:nth-child(5) { animation-delay: 0.5s; }
+.photo-card:nth-child(6) { animation-delay: 0.6s; }
+
+/* Адаптивность */
+@media (max-width: 1024px) {
+    .photos-grid {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 25px;
+    }
+
+    .photo-image {
+        height: 220px;
+    }
+}
+
+@media (max-width: 768px) {
+    .photos-section {
+        padding: 60px 15px;
+    }
+
+    .photos-title {
+        font-size: clamp(1.8rem, 5vw, 2.5rem);
+    }
+
+    .photos-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        padding: 10px;
+    }
+
+    .photo-image {
+        height: 200px;
+    }
+
+    .photo-content {
+        padding: 20px;
+    }
+
+    .empty-title {
+        font-size: 1.8rem;
+    }
+
+    .empty-text {
+        font-size: 1.1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .photos-section {
+        padding: 40px 10px;
+    }
+
+    .photos-title {
+        font-size: 1.6rem;
+    }
+
+    .photos-subtitle {
+        font-size: 1rem;
+    }
+
+    .photo-actions {
+        grid-template-columns: 1fr;
+    }
+
+    .empty-btn {
+        padding: 14px 28px;
+        font-size: 1.1rem;
+    }
+
+    .buy-more-btn {
+        padding: 12px 24px;
+        font-size: 1rem;
+    }
+}

@@ -2,97 +2,212 @@
 
 {% block title %}Настройки - Vizov01.ru{% endblock %}
 
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style_profile_settings.css') }}">
+{% endblock %}
+
 {% block content %}
-<div class="container mt-4 fade-in">
-    <h1 class="mb-4">Настройки профиля</h1>
-
-    <div class="row">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">
-                    <h5>👤 Основная информация</h5>
-                </div>
-                <div class="card-body">
-                    <form>
-                        <div class="row mb-3">
-                            <div class="col-md-6">
-                                <label class="form-label">Имя</label>
-                                <input type="text" class="form-control" value="{{ user.name }}" readonly>
-                            </div>
-                            <div class="col-md-6">
-                                <label class="form-label">Email</label>
-                                <input type="email" class="form-control" value="{{ user.email }}" readonly>
-                            </div>
-                        </div>
-                        <button type="button" class="btn btn-outline-secondary" disabled>
-                            ✏️ Редактирование временно недоступно
-                        </button>
-                    </form>
-                </div>
-            </div>
-
-            <div class="card mt-4">
-                <div class="card-header">
-                    <h5>🔐 Смена пароля</h5>
-                </div>
-                <div class="card-body">
-                    <form>
-                        <div class="mb-3">
-                            <label class="form-label">Текущий пароль</label>
-                            <input type="password" class="form-control" placeholder="********" readonly>
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">Новый пароль</label>
-                            <input type="password" class="form-control" placeholder="********" readonly>
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">Подтвердите новый пароль</label>
-                            <input type="password" class="form-control" placeholder="********" readonly>
-                        </div>
-                        <button type="button" class="btn btn-outline-secondary" disabled>
-                            🔄 Смена пароля временно недоступна
-                        </button>
-                    </form>
-                </div>
-            </div>
+<section class="settings-section fade-in">
+    <div class="settings-container">
+        <div class="settings-header">
+            <h1 class="settings-title">НАСТРОЙКИ ПРОФИЛЯ</h1>
+            <p class="settings-subtitle">Управление вашим аккаунтом и предпочтениями</p>
         </div>
 
-        <div class="col-md-4">
-            <div class="card">
+        <div class="settings-grid">
+            <!-- Основная информация -->
+            <div class="settings-card">
                 <div class="card-header">
-                    <h5>🔔 Уведомления</h5>
+                    <div class="header-icon">👤</div>
+                    <h3>Основная информация</h3>
                 </div>
-                <div class="card-body">
-                    <div class="form-check form-switch mb-3">
-                        <input class="form-check-input" type="checkbox" checked disabled>
-                        <label class="form-check-label">📧 Email уведомления</label>
+                <div class="card-content">
+                    <div class="info-grid">
+                        <div class="info-field">
+                            <label class="field-label">Имя</label>
+                            <div class="field-value">{{ user.name }}</div>
+                        </div>
+                        <div class="info-field">
+                            <label class="field-label">Email</label>
+                            <div class="field-value">{{ user.email }}</div>
+                        </div>
+                        <div class="info-field">
+                            <label class="field-label">Статус</label>
+                            <div class="status-badge verified">
+                                ✅ Подтвержден
+                            </div>
+                        </div>
                     </div>
-                    <div class="form-check form-switch mb-3">
-                        <input class="form-check-input" type="checkbox" checked disabled>
-                        <label class="form-check-label">🖼️ Уведомления о новых фото</label>
+                    <button class="action-btn secondary" disabled>
+                        <span class="btn-icon">✏️</span>
+                        Редактирование временно недоступно
+                    </button>
+                </div>
+            </div>
+
+            <!-- Безопасность -->
+            <div class="settings-card">
+                <div class="card-header">
+                    <div class="header-icon">🔐</div>
+                    <h3>Безопасность</h3>
+                </div>
+                <div class="card-content">
+                    <div class="security-status">
+                        <div class="status-item">
+                            <span class="status-icon">✅</span>
+                            <span class="status-text">Пароль установлен</span>
+                        </div>
+                        <div class="status-item">
+                            <span class="status-icon">✅</span>
+                            <span class="status-text">Email подтвержден</span>
+                        </div>
                     </div>
-                    <div class="form-check form-switch mb-3">
-                        <input class="form-check-input" type="checkbox" disabled>
-                        <label class="form-check-label">📢 Рекламные рассылки</label>
-                    </div>
-                    <div class="form-check form-switch">
-                        <input class="form-check-input" type="checkbox" checked disabled>
-                        <label class="form-check-label">🎫 Уведомления о мероприятиях</label>
+                    <button class="action-btn secondary" disabled>
+                        <span class="btn-icon">🔄</span>
+                        Смена пароля временно недоступна
+                    </button>
+                </div>
+            </div>
+
+            <!-- Уведомления -->
+            <div class="settings-card">
+                <div class="card-header">
+                    <div class="header-icon">🔔</div>
+                    <h3>Уведомления</h3>
+                </div>
+                <div class="card-content">
+                    <div class="notifications-list">
+                        <div class="notification-item">
+                            <div class="notification-info">
+                                <span class="notification-icon">📧</span>
+                                <div>
+                                    <div class="notification-title">Email уведомления</div>
+                                    <div class="notification-desc">Уведомления о бронированиях и мероприятиях</div>
+                                </div>
+                            </div>
+                            <label class="toggle-switch">
+                                <input type="checkbox" checked disabled>
+                                <span class="toggle-slider"></span>
+                            </label>
+                        </div>
+
+                        <div class="notification-item">
+                            <div class="notification-info">
+                                <span class="notification-icon">🖼️</span>
+                                <div>
+                                    <div class="notification-title">Новые фотографии</div>
+                                    <div class="notification-desc">Уведомления о доступных фото с мероприятий</div>
+                                </div>
+                            </div>
+                            <label class="toggle-switch">
+                                <input type="checkbox" checked disabled>
+                                <span class="toggle-slider"></span>
+                            </label>
+                        </div>
+
+                        <div class="notification-item">
+                            <div class="notification-info">
+                                <span class="notification-icon">🎫</span>
+                                <div>
+                                    <div class="notification-title">Мероприятия</div>
+                                    <div class="notification-desc">Анонсы новых мероприятий и событий</div>
+                                </div>
+                            </div>
+                            <label class="toggle-switch">
+                                <input type="checkbox" checked disabled>
+                                <span class="toggle-slider"></span>
+                            </label>
+                        </div>
+
+                        <div class="notification-item">
+                            <div class="notification-info">
+                                <span class="notification-icon">📢</span>
+                                <div>
+                                    <div class="notification-title">Рекламные рассылки</div>
+                                    <div class="notification-desc">Специальные предложения и акции</div>
+                                </div>
+                            </div>
+                            <label class="toggle-switch">
+                                <input type="checkbox" disabled>
+                                <span class="toggle-slider"></span>
+                            </label>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <div class="card mt-4">
-                <div class="card-body text-center">
-                    <div class="text-muted mb-3">
-                        <small>Это демо-версия личного кабинета</small>
+            <!-- Статистика -->
+            <div class="settings-card">
+                <div class="card-header">
+                    <div class="header-icon">📊</div>
+                    <h3>Статистика</h3>
+                </div>
+                <div class="card-content">
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <div class="stat-number">{{ bookings_count or 0 }}</div>
+                            <div class="stat-label">Бронирований</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">{{ photos_count or 0 }}</div>
+                            <div class="stat-label">Фотографий</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">{{ events_count or 0 }}</div>
+                            <div class="stat-label">Мероприятий</div>
+                        </div>
                     </div>
-                    <button class="btn btn-outline-danger w-100" disabled>
-                        🗑️ Удалить аккаунт
-                    </button>
+                </div>
+            </div>
+
+            <!-- Опасная зона -->
+            <div class="settings-card danger-zone">
+                <div class="card-header">
+                    <div class="header-icon">⚠️</div>
+                    <h3>Опасная зона</h3>
+                </div>
+                <div class="card-content">
+                    <div class="danger-content">
+                        <p>Удаление аккаунта - необратимое действие. Все ваши данные, бронирования и фотографии будут безвозвратно удалены.</p>
+                        <button class="action-btn danger" disabled>
+                            <span class="btn-icon">🗑️</span>
+                            Удалить аккаунт
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Информация о системе -->
+            <div class="settings-card">
+                <div class="card-header">
+                    <div class="header-icon">ℹ️</div>
+                    <h3>О системе</h3>
+                </div>
+                <div class="card-content">
+                    <div class="system-info">
+                        <div class="info-item">
+                            <span class="info-label">Версия:</span>
+                            <span class="info-value">Demo 1.0</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Статус:</span>
+                            <span class="info-value beta">Бета-тестирование</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Обновлено:</span>
+                            <span class="info-value">{{ current_date }}</span>
+                        </div>
+                    </div>
+                    <div class="demo-notice">
+                        <div class="notice-icon">💡</div>
+                        <div class="notice-text">
+                            <strong>Демо-режим</strong><br>
+                            Это демонстрационная версия личного кабинета. Функциональность будет расширена в будущих обновлениях.
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
+</section>
 {% endblock %}
